@@ -21,6 +21,7 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
+    "dev": "docker compose up",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/data-source.ts",
     "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/data-source.ts"

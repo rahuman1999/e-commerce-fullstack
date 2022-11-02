@@ -1,3 +1,16 @@
-# Product Services
+# Ecommerce Product Server
 
-This product service branch created with Express,Typeorm and Mysql
+### Tech Used
+
+- NodeJS With Express
+- TypeOrm
+- MySQL
+- Docker
+- Prettier
+
+Steps to Start the Project:
+
+1. Install dependencies
+   - ` npm install`
+2. Start the server
+  - `npm start`
