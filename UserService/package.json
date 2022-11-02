@@ -14,15 +14,17 @@
       "express": "^4.18.2",
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.13",
-      "typeorm": "0.3.6"
+      "typeorm": "0.3.6",
+      "pg": "^8.4.0"
    },
    "scripts": {
       "start": "ts-node src/index.ts",
       "dev:local": "nodemon --exec ts-node src/index.ts --watch ",
-      "typeorm": "typeorm-ts-node-commonjs ",
+      "typeorm": "ts-node ./node_modules/typeorm/cli.js -f src/data-source.ts",
       "local": "docker-compose -f ./local/docker-compose.yml up -d",
       "dev": "npm run copy-env && npm run local && npm run dev:local ",
       "copy-env": "cp ./local/.local.env .env",
-      "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/data-source "
+      "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/data-source.ts",
+      "migration:create": "ts-node ./node_modules/typeorm/cli.js migration:create -d src/data-source.ts -p hello"
    }
 }
