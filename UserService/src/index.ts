@@ -1,17 +1,13 @@
-import { AppDataSource } from "./data-source";
-import { User } from "./entity/User";
+import { dataSource } from "./data-source";
+import app from "./routes/index";
 
-AppDataSource.initialize()
+dataSource
+  .initialize()
   .then(async () => {
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await AppDataSource.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
-    console.log(
-      "Here you can setup and run express / fastify / any other framework."
-    );
+    console.log(`MySQL DB Connected`);
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => {
+      console.log(`App Started`);
+    });
   })
   .catch((error) => console.log(error));

@@ -1,8 +1,10 @@
 import "reflect-metadata";
-import { DataSource } from "typeorm";
+import { DataSource, DataSourceOptions } from "typeorm";
+import { SeederOptions } from "typeorm-extension";
+import { Role } from "./entity/Role";
 import { User } from "./entity/User";
 
-export const AppDataSource = new DataSource({
+const options: DataSourceOptions & SeederOptions = {
   type: "mysql",
   host: "localhost",
   port: 3307,
@@ -11,7 +13,11 @@ export const AppDataSource = new DataSource({
   database: "ecommuser_dev",
   synchronize: true,
   logging: false,
-  entities: [User],
-  migrations: ["./migration/*.ts"],
+  entities: [User, Role],
+  migrationsTableName: "migration_table",
+  migrations: ["src/database/migration/*.ts"],
   subscribers: [],
-});
+  seeds: ["src/database/seeder/*.ts"],
+};
+
+export const dataSource = new DataSource(options);
