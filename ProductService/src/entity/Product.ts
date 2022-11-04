@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne
 } from "typeorm";
+import { Category } from "./Category";
 
 @Entity()
 export class Product {
@@ -19,6 +21,9 @@ export class Product {
 
   @Column({ type: "varchar" })
   productImage: string;
+
+  @ManyToOne(() => Category, (product) => product.categoryid)
+  product: Category;
 
   @CreateDateColumn()
   created_at: Date;

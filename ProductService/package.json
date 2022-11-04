@@ -16,7 +16,8 @@
     "mysql": "^2.18.1",
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.10"
+    "typeorm": "^0.3.10",
+    "typeorm-extension": "^2.2.11"
   },
   "scripts": {
     "start": "nodemon src/index.ts",
@@ -24,6 +25,7 @@
     "dev": "docker compose up",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d src/data-source.ts",
-    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/data-source.ts"
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -d src/data-source.ts",
+    "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed"
   }
 }
