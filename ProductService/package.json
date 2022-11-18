@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "nodemon src/index.ts",
+    "build":"tsc -b",
     "typeorm": "typeorm-ts-node-commonjs",
     "dev": "docker compose up",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
